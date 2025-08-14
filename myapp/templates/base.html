@@ -1,0 +1,29 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="bootstrap.min.css">
+   <title>Document</title>
+</head>
+<body>
+                <div class="row">
+               <div class="col">
+                  <nav class="nav justify-content-center  bg-secondary display-6">
+                     <a class="nav-link active" href="/" aria-current="page">Home</a
+                     >
+                     <a class="nav-link" href="/projects">Projects</a>
+                     <a class="nav-link" href="/tasks">Tasks</a>
+                     <a href="/about" class="nav-link">About</a>
+                     <a href="/createtask" class="nav-link">Create Task</a>
+                     <a href="/create_project" class="nav-link">Create Project</a>
+                  </nav>
+               </div>
+
+             </div>
+
+             {% block content %}
+             {% endblock %}
+</body>
+</html>
