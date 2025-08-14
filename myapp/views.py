@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
-from .forms import CreateNewTask
+from .forms import CreateNewTask,editar_tarea
 from .forms import CreateNewProject
 
-# importar los modelos
+
 from .models import Project,Task
 
 # Create your views here.
@@ -81,3 +81,15 @@ def tasks_delete(request, id):
     task = get_object_or_404(Task, id=id)
     task.delete()
     return redirect('/tasks/')
+
+def edit_tasks(request, id):
+    task = get_object_or_404(Task, id=id)
+    form = editar_tarea(instance=task)
+    return render(request,'tasks/edit_task.html', {
+        'task': task,
+        'id': id,
+        'form': form
+    })
+    
+    def update_tasks(request, id):
+        

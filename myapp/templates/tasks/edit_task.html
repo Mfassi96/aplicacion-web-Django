@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
     <head>
-        <title>Alerta</title>
+        <title>Editar tarea</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -21,26 +21,34 @@
     <body>
         <header>
             <!-- place navbar here -->
-             {% extends 'base.html' %}
+             {%extends 'base.html'%}
         </header>
-        <main>
+        <main class="container">
             {%block content%}
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <h1 class="display-1 text-center">¿Estás seguro de eliminar la tarea "{{task.title}}"?</h1>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col text-center">
-                            <a href="{%url 'tasks_delete' task.id%}" class="btn btn-danger btn-lg">Sí, eliminar <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/delete-trash.png" alt="delete-trash"/></a>
-                            <a href="{% url 'tasks' %}" class="btn btn-secondary btn-lg">No, cancelar <img width="48" height="48" src="https://img.icons8.com/liquid-glass/48/back.png" alt="back"/></a>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col">
+                    <h1 class="display-1">Editar tarea</h1>
                 </div>
+            </div>
 
+            <div class="row">
+                <div class="col">
+                   <form method="get">
+                    {%csrf_token%}
+                    {{form}}
+                   </form>
+                </div>
+            </div>
 
+            <div class="row mt-">
+                <div class="col">
+                    <a href="#" class="btn btn-primary">
+                        Guardar cambios
+                        <img src="https://img.icons8.com/?size=100&id=18764&format=png&color=000000" alt="" width="40">
+                    </a>
+                </div>
+            </div>
 
             {%endblock%}
         </main>
