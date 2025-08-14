@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
     <head>
@@ -21,7 +22,7 @@
     <body>
         <header>
             <!-- place navbar here -->
-             {% extends 'base.html' %}   
+             {% extends 'base.html' %}
         </header>
         {% block content %}
                 <div class="container">
@@ -38,7 +39,7 @@
                         <ul>
                 {%for task in task_list%}
                 <li>{% if task.done == False %} <h3>🕣</h3> {% else %} <h3>✅</h3> {% endif %}{{task.title}} </li>
-                <a href="# "class="btn btn-danger">Eliminar</a>
+                <a href="{% url 'task_delete_alert' task.id%}"class="btn btn-danger">Eliminar</a>
                 <a href="#" class="btn btn-warning">Actualizar</a>
                 <button class="btn btn-success">✅ REALIZADA</button>
 

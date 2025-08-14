@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
     <head>
-        <title>Title</title>
+        <title>Alerta</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -21,16 +21,28 @@
     <body>
         <header>
             <!-- place navbar here -->
-             {% extends 'base.html' %}    
-             
-             {% load static%}
+             {% extends 'base.html' %}
         </header>
-        <main class="container">
+        <main>
             {%block content%}
-                            <h1 class="display-1">Hola Django</h1>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit vitae maiores debitis incidunt molestiae, culpa deserunt? Rerum facere ratione excepturi illo fugit accusantium vero voluptates. Aliquid deleniti dicta nemo!</p>
-            
-                            <img src="{%static 'img.png'%}" alt="" width="120">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h1 class="display-1 text-center">¿Estás seguro de eliminar la tarea "{{task.title}}"?</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <a href="{%url 'tasks_delete' task.id%}" class="btn btn-danger btn-lg">Sí, eliminar <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/delete-trash.png" alt="delete-trash"/></a>
+                            <a href="{% url 'tasks' %}" class="btn btn-secondary btn-lg">No, cancelar</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            {%endblock%}
         </main>
         <footer>
             <!-- place footer here -->
@@ -48,5 +60,4 @@
             crossorigin="anonymous"
         ></script>
     </body>
-            {%endblock%}
 </html>

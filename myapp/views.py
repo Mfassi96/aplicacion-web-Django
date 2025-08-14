@@ -70,3 +70,14 @@ def project_detail(request,id):
         'id':id,
         'project':project,
         'tasks':tareas})
+    
+def task_delete_alert(request, id):
+    task = get_object_or_404(Task, id=id)
+    return render(request, 'tasks/task_delete_alert.html', {
+        'task': task
+    })
+
+def tasks_delete(request, id):
+    task = get_object_or_404(Task, id=id)
+    task.delete()
+    return redirect('/tasks/')
