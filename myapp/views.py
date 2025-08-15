@@ -83,13 +83,24 @@ def tasks_delete(request, id):
     return redirect('/tasks/')
 
 def edit_tasks(request, id):
+    # Obtener el objeto Task a editar
     task = get_object_or_404(Task, id=id)
-    form = editar_tarea(instance=task)
-    return render(request,'tasks/edit_task.html', {
-        'task': task,
-        'id': id,
-        'form': form
+
+    # Si la solicitud es POST, procesa los datos del formulario
+    if request.method == 'POST':
+        # Instancia el formulario con los datos de POST y el objeto existente
+        form = editar_tarea(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('tasks')
+    
+    else:
+        form = editar_tarea(instance=task)
+
+    # Renderiza la plantilla con el formulario
+    
+    return render(request, 'tasks/edit_task.html', {
+        'form': form,
+        'task': task
     })
     
-    def update_tasks(request, id):
-        
